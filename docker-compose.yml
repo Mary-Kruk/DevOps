@@ -1,0 +1,13 @@
+version: "3"
+services:
+  web:
+    image: nginx:latest 
+    ports:
+      - "80:80"
+  status-checker:
+    build: .
+    container_name: compose1
+    volumes:
+       - ./myscript.sh:/usr/local/bin/myscript.sh
+    depends_on:
+      - web
