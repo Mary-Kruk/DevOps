@@ -55,7 +55,6 @@ resource "aws_security_group" "example_sg_2" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
-
 # Створення двох екземплярів EC2
 
 #На першому EC2 за допомогою user data та terraform remote-exec встановити Prometheus stack, Node-exporter та Cadvizor-exporter 
