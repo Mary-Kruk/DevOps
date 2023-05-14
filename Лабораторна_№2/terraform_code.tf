@@ -57,6 +57,8 @@ resource "aws_security_group" "example_sg_2" {
 }
 
 # Створення двох екземплярів EC2
+
+#На першому EC2 за допомогою user data та terraform remote-exec встановити Prometheus stack, Node-exporter та Cadvizor-exporter 
 resource "aws_instance" "example_instance_1" {
   ami           = "ami-0c55b159cbfafe1f0"
   instance_type = "t2.micro"
@@ -86,7 +88,7 @@ resource "aws_instance" "example_instance_1" {
       ]
     }
 }
-
+#На другому EC2 за допомогою user data та terraform remote-exec встановити Nodeexporter та Cadvizor-exporter 
 resource "aws_instance" "example_instance_2" {
   ami           = "ami-0c55b159cbfafe1f0"
   instance_type = "t2.micro"
