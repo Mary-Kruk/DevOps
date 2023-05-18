@@ -55,6 +55,7 @@ resource "aws_security_group" "example_sg_2" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
+
 # Створення двох екземплярів EC2
 
 #На першому EC2 за допомогою user data та terraform remote-exec встановити Prometheus stack, Node-exporter та Cadvizor-exporter 
@@ -81,11 +82,26 @@ resource "aws_instance" "example_instance_1" {
               # Запускаємо Cadvisor Exporter
               sudo docker run -d --name cadvisor-exporter -p 8080:8080 google/cadvisor:latest -prometheus_endpoint="/metrics"
               EOF
-    provisioner "remote-exec" {
-      inline = [
-        "sudo docker ps"
-      ]
+    
+}
+resource "null_resource" "install_prometheus" {
+  depends_on = [aws_instance.example-instance-1]
+
+  provisioner "remote-exec" {
+    inline = [
+      "sleep 60",  # очікування запуску екземпляра EC2 і Docker
+      "curl localhost:9090",  # checking Prometheus
+      "curl localhost:9100/metrics",  # checking Node-exporter
+      "curl localhost:8080/metrics",  # checking Cadvizor-exporter
+    ]
+
+    connection {
+      type = "ssh"
+      user = "ubuntu"
+      host = aws_instance.example-instance-1.public_ip
+      private_key = file("example_key_pair.pem")  #SSH
     }
+  }
 }
 #На другому EC2 за допомогою user data та terraform remote-exec встановити Nodeexporter та Cadvizor-exporter 
 resource "aws_instance" "example_instance_2" {
@@ -109,11 +125,24 @@ resource "aws_instance" "example_instance_2" {
               # Install Cadvisor Exporter
               sudo docker run -d --name cadvisor-exporter -p 8080:8080 google/cadvisor:latest -prometheus_endpoint="/metrics"
               EOF
+ 
+  }
+   resource "null_resource" "install_node_exporter" {
+  depends_on = [aws_instance.example-instance-2]
 
   provisioner "remote-exec" {
     inline = [
-      "sudo docker ps"
-     ]
+      "sleep 60",  # очікування запуску екземпляра EC2 і Docker
+      "curl localhost:9100/metrics",  # checking Node-exporter
+      "curl localhost:8080/metrics",  # checking Cadvizor-exporter
+    ]
+
+    connection {
+      type = "ssh"
+      user = "ubuntu"
+      host = aws_instance.example-instance-2.public_ip
+      private_key = file("example_key_pair.pem")  # SSH
+    }
   }
 }
 
