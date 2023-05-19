@@ -16,7 +16,7 @@ pipeline {
           def dockerfilePath = "path/to/Dockerfile"
           def dockerBuildArgs = "--build-arg ARG=value"
 
-          docker.withRegistry('https://your-docker-registry', 'docker-credentials-id') {
+          docker.withRegistry('https://hub.docker.com', 'docker-credentials-id') {
             def customImage = docker.build(imageName, "-f ${dockerfilePath} ${dockerBuildArgs} .")
             customImage.push('latest')
           }
