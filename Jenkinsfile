@@ -1,3 +1,4 @@
+
 pipeline {
     agent any
     
@@ -8,9 +9,10 @@ pipeline {
             }
         }
         
-        stage('Build and Deploy') {
+        stage('Build Docker Image') {
             steps {
-                sh './myscript.sh'
+                // Build the Docker image using the Dockerfile
+                sh 'docker build -t your-image-name .'
             }
         }
     }
