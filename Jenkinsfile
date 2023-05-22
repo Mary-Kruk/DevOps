@@ -1,5 +1,9 @@
-
 pipeline {
+
+    environment {
+        PATH = "$PATH:/usr/local/bin/docker-compose"
+    }
+
     agent any
     
     stages {
@@ -12,7 +16,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 // Build the Docker image using the Dockerfile
-                sh 'docker build -t your-image-name .'
+                sh 'docker-compose up'
             }
         }
     }
