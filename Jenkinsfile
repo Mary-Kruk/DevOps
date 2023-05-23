@@ -2,17 +2,10 @@ pipeline {
     agent any
     
     stages {
-        stage('Checkout') {
-            steps {
-                // Checkout the code from your Git repository
-                git 'https://github.com/Mary-Kruk/DevOps'
-            }
-        }
-        
         stage('Build Docker Image') {
             steps {
                 // Build the Docker image using the Dockerfile
-                sh 'docker build -t your-image-name .'
+                sh 'docker-compose up -d'
             }
         }
     }
@@ -20,8 +13,8 @@ pipeline {
     post {
         always {
             script {
-                // Clean up Docker resources
-                sh 'docker image prune -f'
+                sh 'docker-compose down -v'
+                sh 'docker network prune -f'
             }
         }
     }
