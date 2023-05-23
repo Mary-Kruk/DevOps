@@ -1,23 +1,23 @@
 pipeline {
-  agent any
- 
-  environment {
-    DOCKER_REGISTRY = "DockerRegistry.com"
-    DOCKER_REGISTRY_CREDENTIALS = credentials("DockerRegistry_Credentials")
-  }
- 
-  stages {
-    stage('Checkout stage') {
-      steps {
-        checkout scm
-      }
+
+    agent any
+    
+    stages {
+        
+        stage('Build Docker Image') {
+            steps {
+                // Build the Docker image using the Dockerfile
+                sh '/usr/local/bin/docker compose up'
+            }
+        }
     }
- 
-    stage('Docker images pushing & building stage') {
-      steps {
-        sh 'docker-compose build'
-        sh 'docker-compose push'
-      }
+    post {
+        always {
+            script {
+                sh '/usr/local/bin/docker compose down -v'
+                sh '/usr/local/bin/docker network prune -f'
+            }
+        }
     }
-  }
+
 }
