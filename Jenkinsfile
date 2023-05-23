@@ -1,23 +1,25 @@
 pipeline {
-
     agent any
     
     stages {
-        
-        stage('Build Docker Image') {
+        stage('Build and Deploy') {
             steps {
-                // Build the Docker image using the Dockerfile
-                sh '/path/to/docker-compose up'
-           }
-        }
-    }
-    post {
-        always {
-            script {
-                sh '/usr/local/bin/docker compose down -v'
-                sh '/usr/local/bin/docker network prune -f'
+                sh './build.sh'
             }
         }
     }
-
+    
+    post {
+        always {
+            script {
+                sh 'docker-compose down -v'
+                sh 'rm -rf ./master/data/*'
+                sh 'rm -rf ./slave/data/*'
+                
+                // Clean up any remaining resources or perform additional cleanup steps here
+                // For example:
+                sh 'docker network prune -f'
+            }
+        }
+    }
 }
