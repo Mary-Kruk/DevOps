@@ -1,25 +1,24 @@
 pipeline {
-    agent any
-    
-    stages {
-        stage('Build and Deploy') {
-            steps {
-                sh './build.sh'
-            }
-        }
+  agent any
+ 
+  environment {
+    DOCKER_REGISTRY = "DockerRegistry.com"
+    DOCKER_REGISTRY_CREDENTIALS = credentials("DockerRegistry_Credentials")
+  }
+ 
+  stages {
+    stage('Checkout stage') {
+      steps {
+        checkout scm
+      }
     }
-    
-    post {
-        always {
-            script {
-                sh 'docker-compose down -v'
-                sh 'rm -rf ./master/data/*'
-                sh 'rm -rf ./slave/data/*'
-                
-                // Clean up any remaining resources or perform additional cleanup steps here
-                // For example:
-                sh 'docker network prune -f'
-            }
-        }
+ 
+    stage('Docker images pushing & building stage') {
+      steps {
+        sh 'docker-compose build'
+        sh 'docker-compose push'
+      }
     }
+ 
+  }
 }
