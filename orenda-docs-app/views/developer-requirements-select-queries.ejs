@@ -1,0 +1,49 @@
+<!-- views/developer-requirements-select-queries.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="/style.css">
+  <title><%= title %></title>
+</head>
+<body>
+  <header>
+    <h1>Оренда друзів - Developer</h1>
+  </header>
+  <nav>
+    <ul>
+      <li><a href="/developer/home">Home</a></li>
+
+      <li><a href="/developer/requirements/tasks">Завдання</a></li>
+      <li><a href="/developer/requirements/database-structure">Структура бази даних</a></li>
+      <li><a href="/developer/requirements/user-interface">Користувацький інтерфейс</a></li>
+      <li><a href="/developer/requirements/entities">Сутності</a></li>
+      <li><a href="/developer/requirements/select-queries">SELECT запити</a></li>    </ul>
+  </nav>
+  <main>
+    <h2>Запити</h2>
+
+    <ul>
+      <li>Для клiєнта С знайти усiх друзiв, яких вiн наймав принаймнi N разiв за вказаний перiод (з дати F по дату T);</li>
+      <li>Для найманого друга Х знайти усiх клiєнтiв, якi наймали його принаймнi N разiв за вказаний перiод (з дати F по дату T);</li>
+      <li>Для найманого друга Х знайти усi свята, на якi його наймали принаймнi N разiв за вказаний перiод (з дати F по дату T);</li>
+      <li>Знайти усiх клiєнтiв, якi наймали щонайменше N рiзних друзiв за вказаний перiод (з дати F по дату T);</li>
+      <li>Знайти усiх найманих друзiв, яких наймали хоча б N разiв за вказаний перiод (з дати F по дату T);</li>
+      <li>Знайти сумарну кiлькiсть побачень по мiсяцях;</li>
+      <li>Для найманого друга Х та кожного свята, на якому вiн побував, знайти скiльки разiв за вказаний перiод (з дати F по дату T) вiн був найнятий на свято у групi з принаймнi N друзiв;</li>
+      <li>Вивести подарунки у порядку спадання середньої кiлькостi вихiдних, що брали найманi друзi, якi отримували подарунок вiд клiєнта С протягом вказаного перiоду (з дати F по дату T);</li>
+      <li>Вивести найманих друзiв у порядку спадання кiлькость скарг вiд груп з принаймнi N клiєнтiв за вказаний перiод (з дати F по дату T);</li>
+      <li>Знайти усi спiльнi подiї для клiєнта С та найманого друга Х за вказаний перiод (з дати F по дату T);</li>
+      <li>Знайти усi днi коли вихiдними були вiд А до В найманих друзiв, включно;</li>
+      <li>По мiсяцях знайти середню кiлькiсть клiєнтiв у групi, що реєстрували скаргу на найманого
+  друга Х;</li>
+    </ul>
+  </main>
+  <footer>
+
+    <p>&copy; 2023 Оренда друзів</p>
+    <p>&copy; Made with love  -  Скажені білочки</p>  </footer>
+</body>
+</html>

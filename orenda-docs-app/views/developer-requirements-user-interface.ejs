@@ -1,0 +1,45 @@
+<!-- views/developer-requirements-user-interface.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="/style.css">
+  <title><%= title %></title>
+</head>
+<body>
+  <header>
+    <h1>Оренда друзів - Developer</h1>
+  </header>
+  <nav>
+    <ul>
+      <li><a href="/developer/home">Home</a></li>
+
+      <li><a href="/developer/requirements/tasks">Завдання</a></li>
+      <li><a href="/developer/requirements/database-structure">Структура бази даних</a></li>
+      <li><a href="/developer/requirements/user-interface">Користувацький інтерфейс</a></li>
+      <li><a href="/developer/requirements/entities">Сутності</a></li>
+      <li><a href="/developer/requirements/select-queries">SELECT запити</a></li>
+    </ul>
+  </nav>
+  <main>
+    <h2>Користувацький інтерфейс</h2>
+    <p>
+      Користувацький інтерфейс може бути виконаний у вигляді desktop або web application. Програмне забезпечення має бути публічно доступне для користування (можливо з попереднім завантаженням).
+      Користувацький інтерфейс має бути тільки обгорткою для власне бази даних та не має містити жодної додаткової логіки окрім:
+    </p>
+    <ul>
+      <li>введення даних (параметрів запиту);</li>
+      <li>відображення результатів (можливо з графіками чи таблицями);</li>
+    </ul>
+    <p>
+      Для першої презентації необхідно підготувати макети користувацького інтерфейсу та отримати відгуки / побажання від замовника. Друга презентація має демонструвати робочий варіант
+      програмного забезпечення.
+    </p>
+  </main>
+  <footer>
+    <p>&copy; 2023 Оренда друзів</p>
+    <p>&copy; Made with love  -  Скажені білочки</p>  </footer>
+</body>
+</html>

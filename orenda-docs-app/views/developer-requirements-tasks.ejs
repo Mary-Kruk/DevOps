@@ -1,0 +1,58 @@
+<!-- views/developer-requirements-tasks.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="/style.css">
+  <title><%= title %></title>
+</head>
+<body>
+  <header>
+    <h1>Оренда друзів - Developer</h1>
+  </header>
+  <nav>
+    <ul>
+      <!-- Додайте посилання для підменю -->
+      <li><a href="/developer/home">Home</a></li>
+
+      <li><a href="/developer/requirements/tasks">Завдання</a></li>
+      <li><a href="/developer/requirements/database-structure">Структура бази даних</a></li>
+      <li><a href="/developer/requirements/user-interface">Користувацький інтерфейс</a></li>
+      <li><a href="/developer/requirements/entities">Сутності</a></li>
+      <li><a href="/developer/requirements/select-queries">SELECT запити</a></li>    </ul>
+  </nav>
+  <main>
+    <h2>Завдання для Розробника</h2>
+    <p>
+      Командi необхiдно розробити проект бази даних та створити користувацький iнтерфейс для
+      внесення змiн та перегляду iнформацiї. Команда отримує завдання вiд вiртуального замовника та
+      повинна виконати усi його фукцiональнi вимоги. Додатково команда вирiшує реалiзувати
+      функцiонал, що не є описаний у завданнi, але може бути (на думку команди) корисним для
+      замовника. Таким чином команда сподiвається справити позитивне враження на замовника та
+      отримати премiю (чи додатковi бали).
+    </p>
+    <p>Опис завдання мiстить:</p>
+    <ul>
+      <li>Перелiк ролей (суб'єктiв) користувачiв програмного забезпечення;</li>
+      <li>Перелiк типiв об'єктiв та суб'єктiв, що мають бути збереженi у базi даних;</li>
+      <li>Перелiк подiй, якi мають бути зафiксованi шляхом внесення iнформацiї до бази даних;</li>
+      <li>Перелiк типiв запитiв iнформацiї для кожної з ролей.</li>
+    </ul>
+    <p>
+      Вказані списки мають бути довільним чином розширені командою (щонайменше один додатковий пункт у кожній з секцій):
+    </p>
+    <ul>
+      <li>Для дотримання цiлiсностi даних;</li>
+      <li>Для бiльшої зручностi програмного забезпечення з точки зору користувачiв (ролей);</li>
+      <li>Для оптимiзацiй виконання запитiв;</li>
+      <li>Для реалiзацiї нового функцiоналу.</li>
+    </ul>
+    <p>Опис запитiв мiстить видiленi параметри (змiннi), якi мають бути отриманi через користувацький iнтерфейс.</p>
+  </main>
+  <footer>
+    <p>&copy; 2023 Оренда друзів</p>
+    <p>&copy; Made with love  -  Скажені білочки</p>  </footer>
+</body>
+</html>
